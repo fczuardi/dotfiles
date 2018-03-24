@@ -19,6 +19,15 @@ set number
 set relativenumber
 
 
+" Programming Preferences
+"====================================================================
+
+" tab to be 2 spaces
+set tabstop=2
+set shiftwidth=2
+set expandtab
+
+
 " Vim Education
 "====================================================================
 

@@ -11,8 +11,32 @@ set t_Co=256                         " Enable 256 colors
 colorscheme evening
 
 
+" Custom Leader Key
+"====================================================================
+
+" use spacebar as leader, and leader + w to save
+let mapleader = "\<Space>"
+nnoremap <Leader>w :w<CR>
+
+
+" Panels
+"====================================================================
+
+" new vertical splits open on the right-hand side
+set splitright
+
+" navigate panels with Ctrl+hjkl
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-L> <C-W><C-L>
+nnoremap <C-H> <C-W><C-H>
+
+
 " Visual Interface
 "====================================================================
+
+" display autocomplete options in the command bar
+set wildmenu
 
 " display line numbers relative to current line
 set number
@@ -27,7 +51,6 @@ set tabstop=2
 set shiftwidth=2
 set expandtab
 
-
 " Vim Education
 "====================================================================
 
@@ -40,17 +63,12 @@ noremap <Down> <NOP>
 noremap <Left> <NOP>
 noremap <Right> <NOP>
 
-
-" Custom Shortcuts
+" Fuzzy Find Files
 "====================================================================
 
-" navigate panels with Ctrl+hjkl
-nnoremap <C-J> <C-W><C-J>
-nnoremap <C-K> <C-W><C-K>
-nnoremap <C-L> <C-W><C-L>
-nnoremap <C-H> <C-W><C-H>
+" use ag intead of grep
+set grepprg=ag\ --nogroup\ --nocolor
 
-" use spacebar as leader, and leader + w to save
-let mapleader = "\<Space>"
-nnoremap <Leader>w :w<CR>
+" file patterns to ignore
+set wildignore+=.git/*,node_modules/*
 

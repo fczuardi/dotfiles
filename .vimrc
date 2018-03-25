@@ -11,6 +11,12 @@ set t_Co=256                         " Enable 256 colors
 colorscheme evening
 
 
+" Persistent Undo
+"====================================================================
+set undofile
+set undodir=~/.vim/undo
+
+
 " Custom Leader Key
 "====================================================================
 
@@ -54,6 +60,7 @@ set tabstop=2
 set shiftwidth=2
 set expandtab
 
+
 " Vim Education
 "====================================================================
 
@@ -65,6 +72,7 @@ noremap <Up> <NOP>
 noremap <Down> <NOP>
 noremap <Left> <NOP>
 noremap <Right> <NOP>
+
 
 " Full Text Search
 "====================================================================

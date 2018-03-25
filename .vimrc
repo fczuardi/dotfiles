@@ -71,9 +71,6 @@ if executable('ag')
   set grepprg=ag\ --nogroup\ --nocolor\ --vimgrep
   set grepformat^=%f:%l:%c:%m   " file:line:column:message
   " shortcut command named Ag
-  " https://www.reddit.com/r/vim/comments/5lm3v3/creating_your_own_agvim_script/dbwz16d/?st=jf5vanfg&sh=e47a1c2c
-  " com! -nargs=+ -complete=file -bar Ag sil! gr! <args>|cw|redr!|let @/="<args>"|set hls
-
   " http://ellengummesson.com/blog/2015/08/01/dropping-ctrlp-and-other-vim-plugins/
   command! -bang -nargs=* -complete=file -bar Ag silent! grep! <args>|redraw!
   autocmd QuickFixCmdPost *grep* cwindow
@@ -82,5 +79,9 @@ endif
 " file patterns to ignore
 set wildignore+=.git/*,node_modules/*
 set wildignore+=*.swp
+
+
+" Filename completion
+"====================================================================
 
 

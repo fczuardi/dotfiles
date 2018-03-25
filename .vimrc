@@ -42,6 +42,9 @@ set wildmenu
 set number
 set relativenumber
 
+" highlight search terms
+set hlsearch
+
 
 " Programming Preferences
 "====================================================================

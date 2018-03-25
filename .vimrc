@@ -8,7 +8,7 @@ set t_Co=256                         " Enable 256 colors
 
 " Colorscheme
 "====================================================================
-colorscheme evening
+colorscheme desert
 
 
 " Persistent Undo

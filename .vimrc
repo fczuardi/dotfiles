@@ -28,8 +28,9 @@ nnoremap <Leader>w :w<CR>
 " Panels
 "====================================================================
 
-" new vertical splits open on the right-hand side
+" new splits open either to the right or to the bottom of the currrent
 set splitright
+set splitbelow
 
 " navigate panels with Ctrl+hjkl
 nnoremap <C-J> <C-W><C-J>

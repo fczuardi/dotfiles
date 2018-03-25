@@ -120,3 +120,15 @@ bindsym $mod+r mode "resize"
 bar {
         status_command i3status
 }
+
+# window borders
+#---------------
+
+hide_edge_borders both
+
+# will deprecate after 4.14
+new_window 1pixel
+
+# wont work on 4.14
+# default_border pixel 0
+

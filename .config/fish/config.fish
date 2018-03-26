@@ -7,3 +7,6 @@ function nvm
   bass source ~/.nvm/nvm.sh --no-use ';' nvm use --delete-prefix v9.9.0
 end
 
+# use PATH from bash
+bass source ~/.profile
+

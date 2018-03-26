@@ -127,7 +127,7 @@ bar {
 hide_edge_borders both
 
 # will deprecate after 4.14
-new_window 1pixel
+new_window pixel 4
 
 # wont work on 4.14
 # default_border pixel 0

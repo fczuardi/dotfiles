@@ -1,3 +1,5 @@
+fish_vi_key_bindings
+
 fundle plugin 'edc/bass'
 fundle init
 

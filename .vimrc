@@ -89,8 +89,10 @@ if executable('ag')
 endif
 
 " file patterns to ignore
-set wildignore+=.git/*,node_modules/*
-set wildignore+=*.swp
+set wildignore+=*.swp,.git/*
+" node js
+set wildignore+=node_modules/*,**/lib/*,coverage/*
+
 
 
 

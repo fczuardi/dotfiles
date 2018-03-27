@@ -101,8 +101,24 @@ set wildignore+=node_modules/*,**/lib/*,coverage/*
 " Requires Plugins
 "--------------------------------------------------------------------
 
+call plug#begin('~/.vim/plugged')
+
+
+
 
 " Filename completion
 "====================================================================
-" @TODO Ctrl+P
+
+" file fuzzy search
+Plug 'ctrlpvim/ctrlp.vim'
+
+" use ag for fast filenime find and dont keep a cache
+let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+let g:ctrlp_use_caching=0
+let g:ctrlp_match_window = 'max:72' 
+
+
+
+
+call plug#end()
 

@@ -9,7 +9,8 @@ set $mod Mod4
 font pango:DejaVu Sans Mono 8
 
 # start a terminal
-bindsym $mod+Return exec "stterm fish"
+# bindsym $mod+Return exec "stterm fish"
+bindsym $mod+Return exec "sakura -x fish"
 
 # kill focused window
 bindsym $mod+Shift+q kill

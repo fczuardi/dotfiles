@@ -4,7 +4,12 @@ set termguicolors                    " Enable GUI colors for the terminal to get
 set t_8f=[38;2;%lu;%lu;%lum        " set foreground color
 set t_8b=[48;2;%lu;%lu;%lum        " set background color
 set t_Co=256                         " Enable 256 colors
-
+" vim hardcodes background color erase even if the terminfo file does
+" not contain bce (not to mention that libvte based terminals
+" incorrectly contain bce in their terminfo files). This causes
+" incorrect background rendering when using a color theme with a
+" background color.
+let &t_ut=''
 
 " Colorscheme
 "====================================================================

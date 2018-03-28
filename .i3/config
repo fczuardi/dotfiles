@@ -124,8 +124,6 @@ bar {
 # window borders
 #---------------
 
-hide_edge_borders both
-
 # will deprecate after 4.14
 new_window pixel 4
 

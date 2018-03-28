@@ -139,6 +139,13 @@ Plug 'chriskempson/base16-vim'
 autocmd VimEnter * colorscheme base16-onedark
 
 
+" Languages
+"====================================================================
+
+" Javascript and jsx (React)
+Plug 'chemzqm/vim-jsx-improve', { 'for': 'javascript' }
+
+
 
 
 call plug#end()

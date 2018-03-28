@@ -13,7 +13,8 @@ let &t_ut=''
 
 " Colorscheme
 "====================================================================
-colorscheme desert
+colorscheme evening
+" colorscheme desert
 
 
 " Persistent Undo
@@ -121,6 +122,18 @@ Plug 'ctrlpvim/ctrlp.vim'
 let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
 let g:ctrlp_use_caching=0
 let g:ctrlp_match_window = 'max:72' 
+
+
+" Colorschemes
+"====================================================================
+
+" nova
+Plug 'trevordmiller/nova-vim'
+" autocmd VimEnter * colorscheme nova
+
+" base 16
+Plug 'chriskempson/base16-vim'
+autocmd VimEnter * colorscheme base16-onedark
 
 
 

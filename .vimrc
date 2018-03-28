@@ -22,6 +22,9 @@ colorscheme evening
 set undofile
 set undodir=~/.vim/undo
 
+" Swp files on a single dir
+"====================================================================
+set directory^=$HOME/.vim/tmp//
 
 " Custom Leader Key
 "====================================================================

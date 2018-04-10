@@ -11,10 +11,10 @@ font pango:DejaVu Sans Mono 8
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
-# start a terminal
+# two terminal options, mod+shift+enter=sakura, mod+enter=pangoterm
 # bindsym $mod+Return exec "stterm fish"
 bindsym $mod+Return exec "pangoterm fish"
-#bindsym $mod+Return exec "sakura -x fish"
+bindsym $mod+Shift+Return exec "sakura -x fish"
 
 # kill focused window
 bindsym $mod+Shift+q kill

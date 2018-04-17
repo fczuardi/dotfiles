@@ -13,8 +13,8 @@ floating_modifier $mod
 
 # two terminal options, mod+shift+enter=sakura, mod+enter=pangoterm
 # bindsym $mod+Return exec "stterm fish"
-bindsym $mod+Return exec "pangoterm fish"
-bindsym $mod+Shift+Return exec "sakura -x fish"
+bindsym $mod+Return exec "stterm fish"
+bindsym $mod+Shift+Return exec "sakura"
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -141,4 +141,7 @@ new_window pixel 4
 
 # wont work on 4.14
 # default_border pixel 0
+
+exec --no-startup-id xrandr --output HDMI-1 1920x1080
+exec --no-startup-id synergyc 192.168.11.221
 

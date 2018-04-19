@@ -1,20 +1,21 @@
 " Truecolor 
 "====================================================================
-set termguicolors                    " Enable GUI colors for the terminal to get truecolor
-set t_8f=[38;2;%lu;%lu;%lum        " set foreground color
-set t_8b=[48;2;%lu;%lu;%lum        " set background color
-set t_Co=256                         " Enable 256 colors
-" vim hardcodes background color erase even if the terminfo file does
-" not contain bce (not to mention that libvte based terminals
-" incorrectly contain bce in their terminfo files). This causes
-" incorrect background rendering when using a color theme with a
-" background color.
-let &t_ut=''
+if has('termguicolors')
+  set termguicolors                    " Enable GUI colors for the terminal to get truecolor
+  set t_8f=[38;2;%lu;%lu;%lum        " set foreground color
+  set t_8b=[48;2;%lu;%lu;%lum        " set background color
+  set t_Co=256                         " Enable 256 colors
+  " vim hardcodes background color erase even if the terminfo file does
+  " not contain bce (not to mention that libvte based terminals
+  " incorrectly contain bce in their terminfo files). This causes
+  " incorrect background rendering when using a color theme with a
+  " background color.
+  let &t_ut=''
+endif
 
 " Colorscheme
 "====================================================================
-colorscheme evening
-" colorscheme desert
+colorscheme desert
 
 
 " Persistent Undo
@@ -130,13 +131,15 @@ let g:ctrlp_match_window = 'max:72'
 " Colorschemes
 "====================================================================
 
-" nova
-Plug 'trevordmiller/nova-vim'
-" autocmd VimEnter * colorscheme nova
+if has('termguicolors')
+  " nova
+  Plug 'trevordmiller/nova-vim'
+  " autocmd VimEnter * colorscheme nova
 
-" base 16
-Plug 'chriskempson/base16-vim'
-autocmd VimEnter * colorscheme base16-onedark
+  " base 16
+  Plug 'chriskempson/base16-vim'
+  autocmd VimEnter * colorscheme base16-onedark
+endif
 
 
 " Languages

@@ -116,6 +116,12 @@ call plug#begin('~/.vim/plugged')
 
 
 
+" Comment / Uncomment (visual selection + gc, gc<movement> or gcc (1 line) 
+"====================================================================
+Plug 'tpope/vim-commentary'
+
+
+
 " Filename completion
 "====================================================================
 

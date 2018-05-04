@@ -59,6 +59,9 @@ nnoremap <C-H> <C-W><C-H>
 
 " display autocomplete options in the command bar
 set wildmenu
+" first tab match up to longest common part and open the wildmenu
+" second tab cycles to next full suggestion
+set wildmode=longest:full,full
 
 " display line numbers relative to current line
 set number

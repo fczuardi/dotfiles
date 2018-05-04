@@ -130,6 +130,12 @@ Plug 'tpope/vim-commentary'
 
 
 
+" Tab to complete instead of Ctrl-P Ctrl-N
+"====================================================================
+Plug 'ervandew/supertab'
+
+
+
 " Filename completion
 "====================================================================
 

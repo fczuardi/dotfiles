@@ -3,7 +3,7 @@
 set encoding=utf-8
 set fileencoding=utf-8
 
-" Truecolor 
+" Truecolor
 "====================================================================
 if has('termguicolors')
   set termguicolors                    " Enable GUI colors for the terminal to get truecolor
@@ -124,7 +124,7 @@ call plug#begin('~/.vim/plugged')
 
 
 
-" Comment / Uncomment (visual selection + gc, gc<movement> or gcc (1 line) 
+" Comment / Uncomment (visual selection + gc, gc<movement> or gcc (1 line)
 "====================================================================
 Plug 'tpope/vim-commentary'
 
@@ -145,7 +145,7 @@ Plug 'ctrlpvim/ctrlp.vim'
 " use ag for fast filenime find and dont keep a cache
 let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
 let g:ctrlp_use_caching=0
-let g:ctrlp_match_window = 'max:72' 
+let g:ctrlp_match_window = 'max:72'
 
 
 " Colorschemes
@@ -160,6 +160,25 @@ if has('termguicolors')
   Plug 'chriskempson/base16-vim'
   autocmd VimEnter * colorscheme base16-onedark
 endif
+
+
+" Code formatters
+"====================================================================
+
+" Plug 'Chiel92/vim-autoformat'
+" let g:formatdef_prettier_javascript = "'prettier'"
+" au BufWrite * :Autoformat
+
+Plug 'w0rp/ale'
+let g:airline#extensions#ale#enabled = 0
+
+
+let g:ale_linters = {}
+let g:ale_fixers = {}
+let g:ale_linters['javascript'] = []
+let g:ale_fixers['javascript'] = ['prettier']
+let g:ale_fix_on_save = 1
+let g:ale_lint_on_text_changed = 0
 
 
 " Languages

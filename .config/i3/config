@@ -4,6 +4,14 @@
 
 set $mod Mod4
 
+# on chromeos vnc I mapped F2 and F9 to mod4
+# and i3 keeps setting the windows that
+# loses focus red/urgent
+# since this is annoying and I dont know
+# how to fix it, I just use the disabled colors
+# for urgent :(
+client.urgent        #333333 #222222 #888888 #292d2e   #222222
+
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
 font pango:DejaVu Sans Mono 8
@@ -130,7 +138,7 @@ bindsym $mod+r mode "resize"
 # finds out, if available)
 bar {
   status_command i3status
-  mode hide
+  # mode hide
 }
 
 # window borders
@@ -143,5 +151,7 @@ new_window pixel 4
 # default_border pixel 0
 
 exec --no-startup-id xrandr --output HDMI-1 1920x1080
-exec --no-startup-id synergyc 192.168.11.221
+exec xmodmap ~/.Xmodmap
+exec stterm
+
 

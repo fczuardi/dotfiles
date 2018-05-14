@@ -23,6 +23,22 @@ endif
 colorscheme desert
 
 
+" Cursorline
+"====================================================================
+function s:insertCursorLine()
+  " https://stackoverflow.com/a/14048055
+  let g:default_CursorLineBg = synIDattr(synIDtrans(hlID('CursorLine')), 'bg')
+  highlight CursorLine guibg=gray10
+endfunction
+function s:defaultCursorLine()
+  execute("highlight CursorLine guibg=" . g:default_CursorLineBg)
+endfunction
+
+set cursorline
+autocmd InsertEnter * call s:insertCursorLine()
+autocmd InsertLeave * call s:defaultCursorLine()
+
+
 " Persistent Undo
 "====================================================================
 set undofile

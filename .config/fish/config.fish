@@ -1,3 +1,6 @@
+# aliases
+source ~/.config/fish/aliases.fish
+
 # Vim key bindings
 fish_vi_key_bindings
 

@@ -8,8 +8,8 @@ fish_vi_key_bindings
 env SHELL=/usr/bin/fish thefuck --alias | source
 
 # github ssh key
-function github
-  eval (ssh-agent -c)
-  ssh-add
-end
+# function github
+#   eval (ssh-agent -c)
+#   ssh-add
+# end
 

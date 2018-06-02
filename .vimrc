@@ -177,7 +177,11 @@ if has('termguicolors')
 
   " base 16
   Plug 'chriskempson/base16-vim'
-  autocmd VimEnter * colorscheme base16-onedark
+
+  " nord
+  Plug 'arcticicestudio/nord-vim'
+
+  autocmd VimEnter * colorscheme nord
 endif
 
 

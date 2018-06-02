@@ -188,18 +188,11 @@ endif
 " Code formatters
 "====================================================================
 
-" Plug 'Chiel92/vim-autoformat'
-" let g:formatdef_prettier_javascript = "'prettier'"
-" au BufWrite * :Autoformat
-
 Plug 'w0rp/ale'
 let g:airline#extensions#ale#enabled = 0
 
-
 let g:ale_linters = {}
 let g:ale_fixers = {}
-let g:ale_linters['javascript'] = []
-let g:ale_fixers['javascript'] = ['prettier']
 let g:ale_fix_on_save = 1
 let g:ale_lint_on_text_changed = 0
 
@@ -209,7 +202,27 @@ let g:ale_lint_on_text_changed = 0
 
 " Javascript and jsx (React)
 Plug 'chemzqm/vim-jsx-improve', { 'for': 'javascript' }
+let g:ale_linters['javascript'] = []
+let g:ale_fixers['javascript'] = ['prettier']
 
+
+" ReasonML
+" Reason syntax
+Plug 'reasonml-editor/vim-reason-plus'
+let g:ale_linters['reason'] = []
+let g:ale_fixers['reason'] = ['refmt']
+" LSP client
+" Plug 'autozimu/LanguageClient-neovim', {
+"     \ 'branch': 'next',
+"     \ 'do': 'bash install.sh',
+"     \ }
+" let g:LanguageClient_serverCommands = {
+"     \ 'reason': ['ocaml-language-server', '--stdio'],
+"     \ 'ocaml': ['ocaml-language-server', '--stdio'],
+"     \ }
+" nnoremap <silent> gd :call LanguageClient_textDocument_definition()<cr>
+" nnoremap <silent> gf :call LanguageClient_textDocument_formatting()<cr>
+" nnoremap <silent> <cr> :call LanguageClient_textDocument_hover()<cr>
 
 
 

@@ -1,3 +1,6 @@
+# default editor
+set -gx EDITOR vim
+
 # aliases
 source ~/.config/fish/aliases.fish
 

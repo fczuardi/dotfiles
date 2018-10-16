@@ -200,6 +200,9 @@ let g:ale_lint_on_text_changed = 0
 " Languages
 "====================================================================
 
+" Python
+Plug 'andviro/flake8-vim', { 'for': 'python'}
+
 " Javascript and jsx (React)
 Plug 'chemzqm/vim-jsx-improve', { 'for': 'javascript' }
 let g:ale_linters['javascript'] = []

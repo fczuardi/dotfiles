@@ -170,10 +170,19 @@ call plug#begin('~/.vim/plugged')
 
 
 
+
 " Comment / Uncomment (visual selection + gc, gc<movement> or gcc (1 line)
 "====================================================================
-Plug 'tpope/vim-commentary'
+Plug 'tomtom/tcomment_vim'
+" Plug 'tpope/vim-commentary'
 
+
+
+" Different Comment String for an embedded different (example, jsx on js) 
+"====================================================================
+" Plug 'suy/vim-context-commentstring'
+
+" autocmd! BufRead,BufNewFile *.{jsx,jx,js} setlocal filetype=javascript.jsx
 
 
 " Tab to complete instead of Ctrl-P Ctrl-N

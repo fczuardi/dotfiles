@@ -264,6 +264,12 @@ let g:ale_fix_on_save = 1
 let g:ale_lint_on_text_changed = 0
 
 
+" Git blame
+"====================================================================
+" default binding is <Leader>s
+Plug 'zivyangll/git-blame.vim'
+
+
 " Languages
 "====================================================================
 

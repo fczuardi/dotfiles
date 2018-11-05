@@ -197,18 +197,49 @@ let g:ctrlp_match_window = 'max:72'
 " Colorschemes
 "====================================================================
 
+" Colorscheme quick switcher F8
+Plug 'xolox/vim-misc'
+Plug 'xolox/vim-colorscheme-switcher'
+let g:colorscheme_switcher_exclude_builtins=1
+
+" Switch between dark and light with F9
+" map <Leader>bg :let &background = ( &background == "dark"? "light" : "dark" )<CR>
+map <F9> :let &background = ( &background == "dark"? "light" : "dark" )<CR>
+
 if has('termguicolors')
   " nova
   Plug 'trevordmiller/nova-vim'
   " autocmd VimEnter * colorscheme nova
 
   " base 16
-  Plug 'chriskempson/base16-vim'
+  " Plug 'chriskempson/base16-vim'
 
   " nord
   Plug 'arcticicestudio/nord-vim'
 
+  " gruvbox
+  Plug 'morhetz/gruvbox'
+  let g:gruvbox_contrast_light = "hard"
+
+  " Apprentice
+  Plug 'romainl/Apprentice'
+  autocmd VimEnter * colorscheme apprentice
+
+  " palenight
+  Plug 'drewtempelmeyer/palenight.vim'
+
+  " Two Firewatch
+  Plug 'rakr/vim-two-firewatch'
+
+  " Vim one
+  Plug 'rakr/vim-one'
+
+  " light or dark, themes with light= [gruvbox, two-firewatch, one]
+  set background=dark
+
+  " start with this colorscheme
   autocmd VimEnter * colorscheme nord
+else
 endif
 
 

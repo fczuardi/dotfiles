@@ -132,6 +132,13 @@ noremap <Left> <NOP>
 noremap <Right> <NOP>
 
 
+" Thinkpad bad placed PgUp PgDown
+" ===================================================================
+inoremap <PageUp> <NOP>
+inoremap <PageDown> <NOP>
+
+
+
 " Full Text Search
 "====================================================================
 

@@ -281,6 +281,9 @@ Plug 'chemzqm/vim-jsx-improve', { 'for': 'javascript' }
 let g:ale_linters['javascript'] = []
 let g:ale_fixers['javascript'] = ['prettier']
 
+" syntax highlight inside template literals
+" Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
+
 
 " ReasonML
 " Reason syntax

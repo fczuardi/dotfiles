@@ -31,7 +31,11 @@ set mouse=a
 function s:insertCursorLine()
   " https://stackoverflow.com/a/14048055
   let g:default_CursorLineBg = synIDattr(synIDtrans(hlID('CursorLine')), 'bg')
-  highlight CursorLine guibg=gray10
+  if &background ==# "light"
+    highlight CursorLine guibg=white
+  else
+    highlight CursorLine guibg=gray10
+  endif
 endfunction
 function s:defaultCursorLine()
   execute("highlight CursorLine guibg=" . g:default_CursorLineBg)

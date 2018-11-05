@@ -276,10 +276,26 @@ Plug 'zivyangll/git-blame.vim'
 " Python
 Plug 'andviro/flake8-vim', { 'for': 'python'}
 
+
+" Stoq settings http://termbin.com/jg23
+let g:PyFlakeCheckers = 'pep8,frosted'
+" Remover em breve: E713
+" E731: do not assign a lambda expression, use a def [pep8]
+" E265: block comment should start with "# " [pep8]
+let g:PyFlakeDisabledMessages = 'E266,E309,E713,E731,E265'
+" This is not really working
+let g:PyFlakeMaxLineLength=120
+let g:PyFlakeSignStart=6000
+" Disable ale for python, since I already have pyflakes
+let g:ale_linters['python'] = []
+
+
+
 " Javascript and jsx (React)
 Plug 'chemzqm/vim-jsx-improve', { 'for': 'javascript' }
 let g:ale_linters['javascript'] = []
-let g:ale_fixers['javascript'] = ['prettier']
+" let g:ale_fixers['javascript'] = ['prettier']
+
 
 " syntax highlight inside template literals
 " Plug 'styled-components/vim-styled-components', { 'branch': 'main' }

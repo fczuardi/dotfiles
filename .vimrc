@@ -66,6 +66,10 @@ let mapleader = "\<Space>"
 nnoremap <Leader>w :w<CR>
 
 
+" Scroll before hitting the firs or last line in the screen
+" ~=================================================================
+set scrolloff=8
+
 " Search 
 "====================================================================
 " case insensitive  unless the search has capital letters

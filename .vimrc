@@ -45,6 +45,9 @@ set cursorline
 autocmd InsertEnter * call s:insertCursorLine()
 autocmd InsertLeave * call s:defaultCursorLine()
 
+" ColorColumn
+" ~=================================================================
+set colorcolumn=100
 
 " Persistent Undo
 "====================================================================

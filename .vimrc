@@ -66,6 +66,15 @@ let mapleader = "\<Space>"
 nnoremap <Leader>w :w<CR>
 
 
+" Search 
+"====================================================================
+" case insensitive  unless the search has capital letters
+set ignorecase
+set smartcase
+
+" incremental search
+set incsearch
+
 " Panels
 "====================================================================
 

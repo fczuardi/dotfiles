@@ -203,6 +203,11 @@ let g:ctrlp_use_caching=0
 let g:ctrlp_match_window = 'max:72'
 
 
+" Git diff lines on the gutter (sign column)
+" ==================================================================
+Plug 'airblade/vim-gitgutter'
+
+
 " Fancy Statusline
 " ==================================================================
 

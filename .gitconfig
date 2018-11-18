@@ -16,3 +16,7 @@
 
 [difftool "kitty.gui"]
   cmd = kitty kitty +kitten diff $LOCAL $REMOTE
+[color]
+	ui = auto
+[cola]
+	spellcheck = false

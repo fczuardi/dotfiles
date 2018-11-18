@@ -4,6 +4,13 @@
 
 set $mod Mod4
 
+# use these keys for focus, movement, and resize directions when reaching for
+# the arrows is not convenient
+set $up k
+set $down j
+set $left h
+set $right l
+
 # on chromeos vnc I mapped F2 and F9 to mod4
 # and i3 keeps setting the windows that
 # loses focus red/urgent
@@ -14,21 +21,26 @@ client.urgent        #333333 #222222 #888888 #292d2e   #222222
 
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
-font pango:DejaVu Sans Mono 8
+# font pango:monospace 8
+# font pango:DejaVu Sans Mono 8
+# font for window titles. ISO 10646 = Unicode
+font pango: M+ 1m, FontAwesome, Ionicons, 10
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
 # two terminal options, mod+shift+enter=sakura, mod+enter=pangoterm
 # bindsym $mod+Return exec "stterm fish"
-bindsym $mod+Return exec "stterm fish"
-bindsym $mod+Shift+Return exec "sakura"
+# bindsym $mod+Return exec "stterm fish"
+bindsym $mod+Return exec "kitty"
+# bindsym $mod+Shift+Return exec "sakura"
 
 # kill focused window
 bindsym $mod+Shift+q kill
 
 # start dmenu (a program launcher)
-bindsym $mod+d exec dmenu_run
+# bindsym $mod+d exec dmenu_run
+bindsym $mod+d exec i3-dmenu-desktop
 
 # split in horizontal orientation (Vim keys)
 bindsym $mod+v split h
@@ -36,17 +48,18 @@ bindsym $mod+v split h
 # split in vertical orientation (Vim keys)
 bindsym $mod+s split v
 
+#
 # change focus (Vim keys)
-bindsym $mod+h focus left
-bindsym $mod+j focus down
-bindsym $mod+k focus up
-bindsym $mod+l focus right
+bindsym $mod+$left focus left
+bindsym $mod+$down focus down
+bindsym $mod+$up focus up
+bindsym $mod+$right focus right
 
 # move focused window (Vim keys)
-bindsym $mod+Shift+h move left
-bindsym $mod+Shift+j move down
-bindsym $mod+Shift+k move up
-bindsym $mod+Shift+l move right
+bindsym $mod+Shift+$left move left
+bindsym $mod+Shift+$down move down
+bindsym $mod+Shift+$up move up
+bindsym $mod+Shift+$right move right
 
 # alternatively, you can use the cursor keys:
 bindsym $mod+Left focus left
@@ -134,10 +147,21 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
+# Fn keys
+# Pulse Audio controls
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +5% #increase sound volume
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -5% #decrease sound volume
+bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle # mute sound
+
+# Sreen brightness controls
+bindsym XF86MonBrightnessUp exec xbacklight -inc 10 # increase screen brightness
+bindsym XF86MonBrightnessDown exec xbacklight -dec 10 # decrease screen brightness
+
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
-  status_command i3status
+  # status_command i3status
+  status_command i3status-rs ~/.config/i3/config.toml
   # mode hide
 }
 
@@ -150,8 +174,20 @@ new_window pixel 4
 # wont work on 4.14
 # default_border pixel 0
 
-exec --no-startup-id xrandr --output HDMI-1 1920x1080
-exec xmodmap ~/.Xmodmap
-exec stterm
+# exec --no-startup-id xrandr --output HDMI-1 1920x1080
+# exec xmodmap ~/.Xmodmap
+
+# Lock with Mod+Shift+O
+bindsym $mod+Shift+o exec "i3lock -c 000000"
+
+# Night light
+exec --no-startup-id redshift -P
+
+# Work
+exec --no-startup-id xrandr --output DP2-2 --above eDP1
+exec kitty 
+# exec kitty --session ~/.i3-kitty-session
+# exec vlc ~/radios.xspf --random --loop --qt-system-tray
+exec cvlc ~/radios.xspf --random --loop --one-instance 
 
 

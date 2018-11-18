@@ -107,6 +107,8 @@ set relativenumber
 " highlight search terms
 set hlsearch
 
+" always display filename on the bottom, even for a single screen
+set laststatus=2
 
 " Programming Preferences
 "====================================================================
@@ -201,6 +203,13 @@ let g:ctrlp_use_caching=0
 let g:ctrlp_match_window = 'max:72'
 
 
+" Fancy Statusline
+" ==================================================================
+
+Plug 'itchyny/lightline.vim'
+set noshowmode
+
+
 " Colorschemes
 "====================================================================
 
@@ -208,10 +217,27 @@ let g:ctrlp_match_window = 'max:72'
 Plug 'xolox/vim-misc'
 Plug 'xolox/vim-colorscheme-switcher'
 let g:colorscheme_switcher_exclude_builtins=1
+#let g:colorscheme_switcher_keep_background=1
 
 " Switch between dark and light with F9
 " map <Leader>bg :let &background = ( &background == "dark"? "light" : "dark" )<CR>
 map <F9> :let &background = ( &background == "dark"? "light" : "dark" )<CR>
+" use F6 to cycle lightline themes
+let g:lightline_current_theme_index=0
+function! CycleLineTheme()
+  let g:lightline_current_theme_index = (g:lightline_current_theme_index + 1) % 19
+  let lightline_theme_names=['wombat', 'solarized', 'powerline', 'jellybeans', 'Tomorrow',
+        \ 'Tomorrow_Night', 'Tomorrow_Night_Blue', 'Tomorrow_Night_Eighties',
+        \ 'PaperColor', 'seoul256', 'landscape', 'one', 'darcula', 'molokai', 'materia',
+        \ 'material', 'OldHope', 'nord', 'deus']
+  let new_lightline_theme = lightline_theme_names[g:lightline_current_theme_index]
+  echo new_lightline_theme 
+  let g:lightline = { 'colorscheme': new_lightline_theme }
+  call lightline#init()
+  call lightline#colorscheme()
+  call lightline#update()
+endfunction
+map <F7> :call CycleLineTheme()<CR>
 
   " === TOP 5 ===
 
@@ -331,6 +357,7 @@ else
   autocmd VimEnter * colorscheme tender
   let g:lightline = { 'colorscheme': 'OldHope' }
 endif
+
 
 
 " Code formatters

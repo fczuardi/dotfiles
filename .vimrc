@@ -26,18 +26,21 @@ set mouse=a
 
 " Cursorline
 "====================================================================
-function! s:insertCursorLine()
-  " https://stackoverflow.com/a/14048055
-  let g:default_CursorLineBg = synIDattr(synIDtrans(hlID('CursorLine')), 'bg')
-  if &background ==# "light"
-    highlight CursorLine guibg=white
-  else
-    highlight CursorLine guibg=gray10
-  endif
-endfunction
-function! s:defaultCursorLine()
-  execute("highlight CursorLine guibg=" . g:default_CursorLineBg)
-endfunction
+" a function I have made to color the line differently depending on the
+" mode you are (normal/insert), I have commented it because performance
+" suffers
+" function! s:insertCursorLine()
+"   " https://stackoverflow.com/a/14048055
+"   let g:default_CursorLineBg = synIDattr(synIDtrans(hlID('CursorLine')), 'bg')
+"   if &background ==# "light"
+"     highlight CursorLine guibg=white
+"   else
+"     highlight CursorLine guibg=gray10
+"   endif
+" endfunction
+" function! s:defaultCursorLine()
+"   execute("highlight CursorLine guibg=" . g:default_CursorLineBg)
+" endfunction
 " autocmd InsertEnter * call s:insertCursorLine()
 " autocmd InsertLeave * call s:defaultCursorLine()
 
@@ -68,7 +71,7 @@ nnoremap <Leader>w :w<CR>
 " ~=================================================================
 set scrolloff=8
 
-" Search 
+" Search
 "====================================================================
 " case insensitive  unless the search has capital letters
 set ignorecase
@@ -89,7 +92,6 @@ nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
-
 
 " Visual Interface
 "====================================================================
@@ -125,14 +127,14 @@ set expandtab
 " display typed keys
 set showcmd
 
-" disable arrow keys
+" disable arrow keys (on normal mode)
 noremap <Up> <NOP>
 noremap <Down> <NOP>
 noremap <Left> <NOP>
 noremap <Right> <NOP>
 
 
-" Thinkpad bad placed PgUp PgDown
+" Thinkpad bad placed PgUp PgDown is annoying on insert mode
 " ===================================================================
 inoremap <PageUp> <NOP>
 inoremap <PageDown> <NOP>
@@ -178,7 +180,7 @@ Plug 'tomtom/tcomment_vim'
 
 
 
-" Different Comment String for an embedded different (example, jsx on js) 
+" Different Comment String for an embedded different (example, jsx on js)
 "====================================================================
 " Plug 'suy/vim-context-commentstring'
 
@@ -212,37 +214,55 @@ Plug 'airblade/vim-gitgutter'
 " ==================================================================
 
 Plug 'itchyny/lightline.vim'
+let g:lightline = {}
 set noshowmode
+
+" Trailing whitespace info on the status line
+" ==================================================================
+Plug 'maximbaz/lightline-trailing-whitespace'
+let g:lightline.component_expand = {'trailing': 'lightline#trailing_whitespace#component'}
+let g:lightline.component_type = {'trailing': 'warning'}
+let g:lightline.active = { 'right': [[ 'trailing' ]] }
 
 
 " Colorschemes
 "====================================================================
 
-" Colorscheme quick switcher F8
+" Colorscheme quick switcher with F8 and shift + F8
 Plug 'xolox/vim-misc'
 Plug 'xolox/vim-colorscheme-switcher'
 let g:colorscheme_switcher_exclude_builtins=1
-#let g:colorscheme_switcher_keep_background=1
+" let g:colorscheme_switcher_keep_background=1
 
 " Switch between dark and light with F9
 " map <Leader>bg :let &background = ( &background == "dark"? "light" : "dark" )<CR>
 map <F9> :let &background = ( &background == "dark"? "light" : "dark" )<CR>
-" use F6 to cycle lightline themes
+
+" use F7 to cycle lightline themes (hackish by myself)
 let g:lightline_current_theme_index=0
+function! ChangeStatusbarColor()
+  " let g:lightline.colorscheme = new_lightline_theme
+  call lightline#init()
+  call lightline#colorscheme()
+  call lightline#update()
+  echo g:lightline.colorscheme
+endfunction
+
 function! CycleLineTheme()
   let g:lightline_current_theme_index = (g:lightline_current_theme_index + 1) % 19
   let lightline_theme_names=['wombat', 'solarized', 'powerline', 'jellybeans', 'Tomorrow',
         \ 'Tomorrow_Night', 'Tomorrow_Night_Blue', 'Tomorrow_Night_Eighties',
         \ 'PaperColor', 'seoul256', 'landscape', 'one', 'darcula', 'molokai', 'materia',
         \ 'material', 'OldHope', 'nord', 'deus']
+
   let new_lightline_theme = lightline_theme_names[g:lightline_current_theme_index]
-  echo new_lightline_theme 
-  let g:lightline = { 'colorscheme': new_lightline_theme }
-  call lightline#init()
-  call lightline#colorscheme()
-  call lightline#update()
+  let g:lightline.colorscheme = new_lightline_theme
+  call ChangeStatusbarColor()
 endfunction
 map <F7> :call CycleLineTheme()<CR>
+
+" My Favorite Themes
+" ==================================================================
 
   " === TOP 5 ===
 
@@ -353,14 +373,16 @@ map <F7> :call CycleLineTheme()<CR>
   " " https://github.com/noahfrederick/vim-noctu
   " Plug 'noahfrederick/vim-noctu'
 
- 
+
 set background=dark
 if has('termguicolors')
   autocmd VimEnter * colorscheme snow
-  let g:lightline = { 'colorscheme': 'jellybeans' }
+  let g:lightline.colorscheme = 'jellybeans'
+  autocmd VimEnter * call ChangeStatusbarColor()
 else
   autocmd VimEnter * colorscheme tender
-  let g:lightline = { 'colorscheme': 'OldHope' }
+  let g:lightline.colorscheme = 'OldHope'
+  autocmd VimEnter * call ChangeStatusbarColor()
 endif
 
 

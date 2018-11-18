@@ -9,18 +9,16 @@ if has('termguicolors')
   set termguicolors                    " Enable GUI colors for the terminal to get truecolor
   set t_8f=[38;2;%lu;%lu;%lum        " set foreground color
   set t_8b=[48;2;%lu;%lu;%lum        " set background color
-  set t_Co=256                         " Enable 256 colors
+  " set t_Co=256                         " Enable 256 colors
   " vim hardcodes background color erase even if the terminfo file does
   " not contain bce (not to mention that libvte based terminals
   " incorrectly contain bce in their terminfo files). This causes
   " incorrect background rendering when using a color theme with a
   " background color.
   let &t_ut=''
+else
+  set t_Co=256
 endif
-
-" Colorscheme
-"====================================================================
-colorscheme desert
 
 " Scrolwheel / Trackpoint scroll
 "====================================================================
@@ -28,7 +26,7 @@ set mouse=a
 
 " Cursorline
 "====================================================================
-function s:insertCursorLine()
+function! s:insertCursorLine()
   " https://stackoverflow.com/a/14048055
   let g:default_CursorLineBg = synIDattr(synIDtrans(hlID('CursorLine')), 'bg')
   if &background ==# "light"
@@ -37,13 +35,13 @@ function s:insertCursorLine()
     highlight CursorLine guibg=gray10
   endif
 endfunction
-function s:defaultCursorLine()
+function! s:defaultCursorLine()
   execute("highlight CursorLine guibg=" . g:default_CursorLineBg)
 endfunction
+" autocmd InsertEnter * call s:insertCursorLine()
+" autocmd InsertLeave * call s:defaultCursorLine()
 
 set cursorline
-autocmd InsertEnter * call s:insertCursorLine()
-autocmd InsertLeave * call s:defaultCursorLine()
 
 " ColorColumn
 " ~=================================================================
@@ -215,40 +213,123 @@ let g:colorscheme_switcher_exclude_builtins=1
 " map <Leader>bg :let &background = ( &background == "dark"? "light" : "dark" )<CR>
 map <F9> :let &background = ( &background == "dark"? "light" : "dark" )<CR>
 
-if has('termguicolors')
+  " === TOP 5 ===
+
+  " Snow
+  " a blue-tinted winter vimscape (low-contrast vim theme/colorscheme)
+  " https://github.com/nightsense/snow
+  Plug 'nightsense/snow'
+
+  " Zenburn
+  " Zenburn is a low-contrast color scheme for Vim.
+  " http://kippura.org/zenburnpage/
+  Plug 'jnurmine/Zenburn'
+
   " nova
+  " A coding color scheme where each color has a dedicated purpose.
+  " https://trevordmiller.com/projects/nova
   Plug 'trevordmiller/nova-vim'
-  " autocmd VimEnter * colorscheme nova
 
-  " base 16
-  " Plug 'chriskempson/base16-vim'
+  " Paramount
+  " A minimal colorscheme for Vim that only puts emphasis on the paramount.
+  " https://github.com/owickstrom/vim-colors-paramount
+  Plug 'owickstrom/vim-colors-paramount'
 
-  " nord
-  Plug 'arcticicestudio/nord-vim'
+  " frign
+  " A simple, blue, almost monocromatic, 24-bit color scheme for vim
+  Plug 'KimNorgaard/vim-frign'
+
+
+  " === TOP 10 ===
 
   " gruvbox
   Plug 'morhetz/gruvbox'
   let g:gruvbox_contrast_light = "hard"
 
-  " Apprentice
-  Plug 'romainl/Apprentice'
-  autocmd VimEnter * colorscheme apprentice
+  " vim-colors-plain
+  " This is a fork of vim-colors-off which is being developed based on my personal taste.
+  " https://github.com/andreypopp/vim-colors-plain
+  Plug 'andreypopp/vim-colors-plain'
 
   " palenight
   Plug 'drewtempelmeyer/palenight.vim'
 
+  " Tender
+  Plug 'jacoborus/tender.vim'
+
   " Two Firewatch
   Plug 'rakr/vim-two-firewatch'
 
-  " Vim one
-  Plug 'rakr/vim-one'
 
-  " light or dark, themes with light= [gruvbox, two-firewatch, one]
-  set background=dark
+  " === Others ===
 
-  " start with this colorscheme
-  autocmd VimEnter * colorscheme nord
+  " nord
+  Plug 'arcticicestudio/nord-vim'
+
+  " NeoDark
+  " NeoDark is a very dark colorscheme based on the color pallet of vim-gotham. This colourscheme was developed with a minimal NeoVim config in mind. Currently only terminal vim is supported.
+  Plug 'CallumHoward/vim-neodark'
+
+  " Base2Tone
+  " http://base2t.one/
+  " https://github.com/atelierbram/Base2Tone-vim
+  Plug 'atelierbram/Base2Tone-vim'
+
+  " === disabled for now ===
+
+  " " base 16
+  " Plug 'chriskempson/base16-vim'
+
+  " Base2Tone
+    " CaveDark.vim
+    " CaveLight.vim
+    " DesertDark.vim
+    " DesertLight.vim
+    " DrawbridgeDark.vim
+    " DrawbridgeLight.vim
+    " EarthDark.vim
+    " EarthLight.vim
+    " EveningLight.vim
+    " ForestDark.vim
+    " ForestLight.vim
+    " HeathDark.vim
+    " HeathLight.vim
+    " LakeDark.vim
+    " LakeLight.vim
+    " MeadowDark.vim
+    " MeadowLight.vim
+    " MorningLight.vim
+    " PoolLight.vim
+    " SeaDark.vim
+    " SeaLight.vim
+    " SpaceDark.vim
+    " SpaceLight.vim
+
+  " " One-Half
+  " Plug 'sonph/onehalf', {'rtp': 'vim/'}
+
+  " " Apprentice
+  " Plug 'romainl/Apprentice'
+
+  " " Vim one
+  " Plug 'rakr/vim-one'
+
+  " " Dracula
+  " Plug 'dracula/vim', { 'as': 'dracula' }
+
+  " " noctu
+  " " A Vim color scheme for 16-color terminals
+  " " https://github.com/noahfrederick/vim-noctu
+  " Plug 'noahfrederick/vim-noctu'
+
+ 
+set background=dark
+if has('termguicolors')
+  autocmd VimEnter * colorscheme snow
+  let g:lightline = { 'colorscheme': 'jellybeans' }
 else
+  autocmd VimEnter * colorscheme tender
+  let g:lightline = { 'colorscheme': 'OldHope' }
 endif
 
 

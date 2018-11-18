@@ -1,0 +1,73 @@
+# theme = "solarized-dark"
+theme = "plain"
+# theme = "gruvbox-dark"
+# theme = "gruvbox-dark"
+icons = "awesome"
+
+[[block]]
+block = "time"
+interval = 60
+format = "%a %d/%m %R"
+
+[[block]]
+block = "battery"
+device = "BAT1"
+interval = 9
+format = "{percentage}% | {time}"
+#
+# [[block]]
+# block = "load"
+# interval = 1
+# format = "{1m}"
+#
+# [[block]]
+# block = "memory"
+# display_type = "memory"
+# format_mem = "{Mup}%"
+# format_swap = "{SUp}%"
+#
+# [[block]]
+# block = "cpu"
+# interval = 1
+#
+# [[block]]
+# block = "temperature"
+# collapsed = true
+# interval = 10
+# format = "{min}° min, {max}° max, {average}° avg"
+#
+# [[block]]
+# block = "disk_space"
+# path = "/home"
+# alias = ""
+# info_type = "available"
+# show_percentage = true
+# unit = "GB"
+# interval = 20
+# warning = 20.0
+# alert = 10.0
+#
+# [[block]]
+# block = "disk_space"
+# path = "/"
+# alias = "/"
+# info_type = "available"
+# show_percentage = true
+# unit = "GB"
+# interval = 20
+# warning = 10.0
+# alert = 4.0
+
+[[block]]
+block = "music"
+player = "vlc"
+buttons = ["prev", "play", "next"]
+
+[[block]]
+block = "sound"
+
+[[block]]
+block = "backlight"
+
+
+

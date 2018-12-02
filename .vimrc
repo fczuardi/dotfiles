@@ -113,8 +113,8 @@ set wildmenu
 set wildmode=longest:full,full
 
 " display line numbers relative to current line
-set number
-set relativenumber
+" set number
+" set relativenumber
 
 " highlight search terms
 set hlsearch
@@ -138,10 +138,10 @@ set expandtab
 set showcmd
 
 " disable arrow keys (on normal mode)
-noremap <Up> <NOP>
-noremap <Down> <NOP>
-noremap <Left> <NOP>
-noremap <Right> <NOP>
+" noremap <Up> <NOP>
+" noremap <Down> <NOP>
+" noremap <Left> <NOP>
+" noremap <Right> <NOP>
 
 
 " Thinkpad bad placed PgUp PgDown is annoying on insert mode
@@ -218,6 +218,7 @@ let g:ctrlp_match_window = 'max:72'
 " Git diff lines on the gutter (sign column)
 " ==================================================================
 Plug 'airblade/vim-gitgutter'
+set signcolumn=yes
 
 
 " Fancy Statusline
@@ -405,8 +406,10 @@ let g:airline#extensions#ale#enabled = 0
 
 let g:ale_linters = {}
 let g:ale_fixers = {}
-let g:ale_fix_on_save = 1
+let g:ale_fix_on_save = 0
 let g:ale_lint_on_text_changed = 0
+let g:ale_linters_explicit = 1
+let g:ale_set_quickfix = 1
 
 
 " Git blame
@@ -438,8 +441,9 @@ let g:ale_linters['python'] = []
 
 " Javascript and jsx (React)
 Plug 'chemzqm/vim-jsx-improve', { 'for': 'javascript' }
-let g:ale_linters['javascript'] = []
-" let g:ale_fixers['javascript'] = ['prettier']
+let g:ale_linters['javascript'] = ['eslint']
+let g:ale_fixers['javascript'] = ['prettier']
+" let g:ale_linters['javascript'] = ['prettier']
 
 
 " syntax highlight inside template literals
@@ -468,3 +472,7 @@ let g:ale_fixers['reason'] = ['refmt']
 
 call plug#end()
 
+" Local config
+if filereadable($HOME . "/.vimrc.local")
+  source ~/.vimrc.local
+endif

@@ -225,8 +225,12 @@ set signcolumn=yes
 " ==================================================================
 
 Plug 'itchyny/lightline.vim'
-let g:lightline = {}
 set noshowmode
+let g:lightline = {
+  \ 'active': {
+  \   'left': [ [ 'mode', 'paste' ], [ 'readonly', 'relativepath', 'modified' ] ]
+  \ }
+  \ }
 
 " Trailing whitespace info on the status line
 " ==================================================================
@@ -242,7 +246,6 @@ let g:lightline.active = { 'right': [[ 'trailing' ]] }
 " Colorscheme quick switcher with F8 and shift + F8
 Plug 'xolox/vim-misc'
 Plug 'xolox/vim-colorscheme-switcher'
-let g:colorscheme_switcher_exclude_builtins=1
 " let g:colorscheme_switcher_keep_background=1
 
 " Switch between dark and light with F9
@@ -277,10 +280,8 @@ map <F7> :call CycleLineTheme()<CR>
 
   " === TOP 5 ===
 
-  " Snow
-  " a blue-tinted winter vimscape (low-contrast vim theme/colorscheme)
-  " https://github.com/nightsense/snow
-  Plug 'nightsense/snow'
+  " Two Firewatch
+  Plug 'rakr/vim-two-firewatch'
 
   " Zenburn
   " Zenburn is a low-contrast color scheme for Vim.
@@ -292,38 +293,49 @@ map <F7> :call CycleLineTheme()<CR>
   " https://trevordmiller.com/projects/nova
   Plug 'trevordmiller/nova-vim'
 
-  " Paramount
-  " A minimal colorscheme for Vim that only puts emphasis on the paramount.
-  " https://github.com/owickstrom/vim-colors-paramount
-  Plug 'owickstrom/vim-colors-paramount'
-
   " frign
   " A simple, blue, almost monocromatic, 24-bit color scheme for vim
   Plug 'KimNorgaard/vim-frign'
 
+  " Alduin
+  " https://github.com/AlessandroYorba/Alduin
+  Plug 'AlessandroYorba/Alduin'
+  let g:alduin_Shout_Dragon_Aspect     = 0 " darkest gray background
+  let g:alduin_Shout_Become_Ethereal   = 1 " black background
+
+  let g:alduin_Shout_Fire_Breath       = 1 " dark red highlight
+  let g:alduin_Shout_Animal_Allegiance = 0 " remove background from strings
+  let g:alduin_Shout_Aura_Whisper      = 0 " remove block matchparens - add underline
 
   " === TOP 10 ===
+
+  " Snow
+  " a blue-tinted winter vimscape (low-contrast vim theme/colorscheme)
+  " https://github.com/nightsense/snow
+  Plug 'nightsense/snow'
 
   " gruvbox
   Plug 'morhetz/gruvbox'
   let g:gruvbox_contrast_light = "hard"
+
+  " Paramount
+  " A minimal colorscheme for Vim that only puts emphasis on the paramount.
+  " https://github.com/owickstrom/vim-colors-paramount
+  Plug 'owickstrom/vim-colors-paramount'
 
   " vim-colors-plain
   " This is a fork of vim-colors-off which is being developed based on my personal taste.
   " https://github.com/andreypopp/vim-colors-plain
   Plug 'andreypopp/vim-colors-plain'
 
-  " palenight
-  Plug 'drewtempelmeyer/palenight.vim'
-
   " Tender
   Plug 'jacoborus/tender.vim'
 
-  " Two Firewatch
-  Plug 'rakr/vim-two-firewatch'
-
 
   " === Others ===
+
+  " palenight
+  Plug 'drewtempelmeyer/palenight.vim'
 
   " nord
   Plug 'arcticicestudio/nord-vim'
@@ -386,11 +398,24 @@ map <F7> :call CycleLineTheme()<CR>
 
 
 set background=dark
-if has('termguicolors')
-  autocmd VimEnter * colorscheme snow
+
+if $DISPLAY == ""
+  let is_x_terminal = 0
+else
+  let is_x_terminal = 1
+endif
+
+let g:colorscheme_switcher_exclude_builtins=1
+if is_x_terminal
+  let g:colorscheme_switcher_exclude = ['plain-cterm']
+  " autocmd VimEnter * colorscheme snow
+  " autocmd VimEnter * colorscheme alduin
+  autocmd VimEnter * colorscheme two-firewatch
   let g:lightline.colorscheme = 'jellybeans'
   autocmd VimEnter * call ChangeStatusbarColor()
 else
+  let g:colorscheme_switcher_exclude = ['Base2Tone_EveningDark', 'Base2Tone_MorningDark', 
+    \ 'Base2Tone_PoolDark', 'neodark', 'zenburn', 'frign', 'nova', 'alduin', 'nord', 'plain', 'snow']
   autocmd VimEnter * colorscheme tender
   let g:lightline.colorscheme = 'OldHope'
   autocmd VimEnter * call ChangeStatusbarColor()

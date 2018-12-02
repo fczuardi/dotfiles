@@ -88,7 +88,7 @@ set smartcase
 " incremental search
 set incsearch
 
-" Panels
+" Panels and Tabs
 "====================================================================
 
 " new splits open either to the right or to the bottom of the currrent
@@ -100,6 +100,8 @@ nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
+
+set tabpagemax=100
 
 " Visual Interface
 "====================================================================

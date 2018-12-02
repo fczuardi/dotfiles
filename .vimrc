@@ -3,6 +3,14 @@
 set encoding=utf-8
 set fileencoding=utf-8
 
+" Shorter timeout for escape sequences
+"====================================================================
+" the default value can cause lag when you try P or O after an Esc
+set timeoutlen=500
+
+" Update timeout, useful for gitgutter
+set updatetime=500
+
 " Truecolor
 "====================================================================
 if has('termguicolors')

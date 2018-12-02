@@ -1,8 +1,5 @@
 #!/bin/sh
 
-# use right alt as the compose key
-setxkbmap -option compose:ralt
-
 if [ -x "$(command -v compton)" ]; then
   compton -CGb
 fi
@@ -13,6 +10,9 @@ if [[ $WM = "gnome" ]]; then
 else
   # start ssh-agent, later on a terminal you can type ssh-add to enter your ssh-key password only once
   eval $(ssh-agent)
+  # use right alt as the compose key
+  setxkbmap -option compose:ralt
   # start i3wm
   i3
+  # xmodmap ~/.Xmodmap
 fi

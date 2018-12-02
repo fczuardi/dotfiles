@@ -232,12 +232,15 @@ let g:lightline = {
   \ }
   \ }
 
-" Trailing whitespace info on the status line
+" Focus mode (Goyo + Limelight)
 " ==================================================================
-Plug 'maximbaz/lightline-trailing-whitespace'
-let g:lightline.component_expand = {'trailing': 'lightline#trailing_whitespace#component'}
-let g:lightline.component_type = {'trailing': 'warning'}
-let g:lightline.active = { 'right': [[ 'trailing' ]] }
+Plug 'junegunn/goyo.vim'
+Plug 'junegunn/limelight.vim'
+nnoremap <Leader>z :Goyo<CR>
+autocmd! User GoyoEnter Limelight
+autocmd! User GoyoLeave Limelight!
+
+
 
 
 " Colorschemes

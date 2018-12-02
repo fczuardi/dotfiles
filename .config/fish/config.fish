@@ -5,7 +5,13 @@ set -gx EDITOR vim
 source ~/.config/fish/aliases.fish
 
 # Vim key bindings
-fish_vi_key_bindings
+# fish_vi_key_bindings
+
+# Default key bindings
+fish_default_key_bindings
+
+# Alt+D to kill word forward
+bind \ed 'kill-word'
 
 # thefuck
 env SHELL=/usr/bin/fish thefuck --alias | source

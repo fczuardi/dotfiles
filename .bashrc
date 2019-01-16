@@ -11,14 +11,14 @@ if [ -e ~/.stoq.aliases ] ; then
    source ~/.stoq.aliases
 fi
 
-BASIC_PROMPT='[\u@\h \W]\$ '
+BASIC_PROMPT='[\u@\h \W]\$'
 # PROMPT_COLOR='0;32' #green
 # PROMPT_COLOR='0;35' #purple
 # PROMPT_COLOR='0;36' #cyan
 PROMPT_COLOR='100' #dark gray
 
-# PS1="\e[${PROMPT_COLOR}m${BASIC_PROMPT}\e[m"
-PS1="${BASIC_PROMPT}"
+PS1="\e[${PROMPT_COLOR}m${BASIC_PROMPT}\e[m "
+# PS1="${BASIC_PROMPT} "
 
 export EDITOR=/usr/bin/vim
 

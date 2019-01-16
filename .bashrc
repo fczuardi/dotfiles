@@ -3,33 +3,9 @@
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
-alias ls='ls --color=auto'
-alias ll='ls -l'
-alias la='ls -la'
-
-#My aliases
-alias x='startx'
-alias g='WM=gnome startx'
-alias gl='git log --all --graph --abbrev-commit'
-
-# Stoq directories
-alias cds='cd ~/stoq'
-alias cdss='cd ~/stoq/stoq'
-alias cdsl='cd ~/stoq/stoq-web/stoq-link'
-alias cdsp='cd ~/stoq/stoq-link-premium'
-alias cdsa='cd ~/stoq/stoq-link-admin'
-alias cdst='cd ~/stoq/stoq-mobile-pos'
-alias cdsss='cd ~/stoq/stoq-server'
-alias stoqpypath='source ~/stoq/stoq/utils/env.sh'
-alias stoqpy2='source ~/stoq/stoq-link-admin/venv/bin/activate'
-alias stoqpy3='source ~/stoqEnv/bin/activate'
-alias n11='source ~/work/node11.2.0/bin/activate'
-alias linkssh='source ~/stoq/stoq-link-admin/assets/scripts/link-ssh.sh'
-alias stoqenv='stoqpypath && stoqpy3 && n11 && linkssh'
-
-# vim
-alias vi=vim
-alias vimp='vim -p'
+if [ -e ~/.bashrc.aliases ] ; then
+   source ~/.bashrc.aliases
+fi
 
 BASIC_PROMPT='[\u@\h \W]\$ '
 # PROMPT_COLOR='0;32' #green

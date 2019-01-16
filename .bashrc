@@ -7,6 +7,10 @@ if [ -e ~/.bashrc.aliases ] ; then
    source ~/.bashrc.aliases
 fi
 
+if [ -e ~/.stoq.aliases ] ; then
+   source ~/.stoq.aliases
+fi
+
 BASIC_PROMPT='[\u@\h \W]\$ '
 # PROMPT_COLOR='0;32' #green
 # PROMPT_COLOR='0;35' #purple
@@ -38,9 +42,9 @@ export LESS=FRXWS
 export PATH="$HOME/.npm-global/bin:$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 # fish
 
-# fzf completion and key bindings
-source /usr/share/fzf/completion.bash
-source /usr/share/fzf/key-bindings.bash
-export FZF_CTRL_T_COMMAND='ag -g "" --hidden --ignore .ssb --ignore .git --ignore .cache --ignore .vscode* --ignore node_modules'
-
-stoqenv
+# # fzf completion and key bindings
+# source /usr/share/fzf/completion.bash
+# source /usr/share/fzf/key-bindings.bash
+# export FZF_CTRL_T_COMMAND='ag -g "" --hidden --ignore .ssb --ignore .git --ignore .cache --ignore .vscode* --ignore node_modules'
+#
+# stoqenv

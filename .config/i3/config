@@ -17,7 +17,7 @@ set $right l
 # since this is annoying and I dont know
 # how to fix it, I just use the disabled colors
 # for urgent :(
-client.urgent        #333333 #222222 #888888 #292d2e   #222222
+# client.urgent        #333333 #222222 #888888 #292d2e   #222222
 
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).

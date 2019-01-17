@@ -11,16 +11,21 @@ if [ -e ~/.stoq.aliases ] ; then
    source ~/.stoq.aliases
 fi
 
+# Prompt
+#------------------------------------------------
 BASIC_PROMPT='[\u@\h \W]\$'
 # PROMPT_COLOR='0;32' #green
 # PROMPT_COLOR='0;35' #purple
-# PROMPT_COLOR='0;36' #cyan
-PROMPT_COLOR='100' #dark gray
+PROMPT_COLOR='0;36' #cyan
+# PROMPT_COLOR='100' #dark gray
 
-PS1="\e[${PROMPT_COLOR}m${BASIC_PROMPT}\e[m "
-# PS1="${BASIC_PROMPT} "
+# PS1="\e[${PROMPT_COLOR}m${BASIC_PROMPT}\e[m "
+PS1="${BASIC_PROMPT} "
 
-export EDITOR=/usr/bin/vim
+# Default apps
+#------------------------------------------------
+EDITOR=/usr/bin/vim
+PAGER=/usr/bin/less
 
 # Less default settings
 # ----------------------------------------
@@ -29,18 +34,7 @@ export EDITOR=/usr/bin/vim
 # X: Don't use termcap init/deinit strings.
 # W: Highlight first new line after any forward movement.
 # S: Chop (truncate) long lines rather than wrapping.
-export PAGER=/usr/bin/less
-export LESS=FRXWS
-
-# source ~/.cravefood.sh
-# source ~/stoq/stoq/utils/env.sh
-# source ~/stoqEnv/bin/activate
-# source ~/work/node10.12.0/bin/activate
-# source ~/work/node11.0.0/bin/activate
-# source ~/work/node11.1.0/bin/activate
-
-export PATH="$HOME/.npm-global/bin:$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
-# fish
+LESS=FRXWS
 
 # # fzf completion and key bindings
 # source /usr/share/fzf/completion.bash
@@ -48,3 +42,5 @@ export PATH="$HOME/.npm-global/bin:$HOME/.yarn/bin:$HOME/.config/yarn/global/nod
 # export FZF_CTRL_T_COMMAND='ag -g "" --hidden --ignore .ssb --ignore .git --ignore .cache --ignore .vscode* --ignore node_modules'
 #
 # stoqenv
+
+# echo "bashrc end"

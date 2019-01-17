@@ -3,6 +3,17 @@
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
+
+# auto start ssh-agent just one time
+# see https://wiki.archlinux.org/index.php/SSH_keys#SSH_agents
+if ! pgrep -u "$USER" ssh-agent > /dev/null; then
+    ssh-agent > ~/.ssh-agent-thing
+fi
+if [[ ! "$SSH_AUTH_SOCK" ]]; then
+    eval "$(<~/.ssh-agent-thing)"
+fi
+
+# aliases
 if [ -e ~/.bashrc.aliases ] ; then
    source ~/.bashrc.aliases
 fi

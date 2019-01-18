@@ -11,6 +11,21 @@ set $down j
 set $left h
 set $right l
 
+# Antergos config conlors
+set $bg-color            #2f343f
+set $inactive-bg-color   #2f343f
+set $text-color          #f3f4f5
+set $inactive-text-color #676e7d
+set $urgent-bg-color     #e53935
+set $indicator-color     #a0a0a0
+
+# set window colors
+#                       border             background         text                 indicator
+client.focused          $bg-color          $bg-color          $text-color          $indicator-color
+client.unfocused        $inactive-bg-color $inactive-bg-color $inactive-text-color $indicator-color
+client.focused_inactive $inactive-bg-color $inactive-bg-color $inactive-text-color $indicator-color
+client.urgent           $urgent-bg-color   $urgent-bg-color   $text-color          $indicator-color
+
 # on chromeos vnc I mapped F2 and F9 to mod4
 # and i3 keeps setting the windows that
 # loses focus red/urgent
@@ -128,7 +143,8 @@ bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
 # bindsym $mod+Shift+z [class=".*"] kill
 # bindsym $mod+Shift+e exec exit
-bindsym $mod+Shift+e exec "source `readlink ~/.config/i3/exit.sh`"; exit
+# bindsym $mod+Shift+e exec "source `readlink ~/.config/i3/exit.sh`"; exit
+bindsym $mod+Shift+z exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
@@ -168,22 +184,34 @@ bindsym XF86MonBrightnessDown exec xbacklight -dec 10 # decrease screen brightne
 
 # External Displays
 # bindsym XF86Display exec "source `readlink ~/.config/i3/displays.sh`"
-bindsym $mod+F7 exec "source `readlink ~/.config/i3/displays.sh`"
+bindsym $mod+F7 exec "source ~/.config/i3/displays.sh"
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
-  # status_command i3status
-  status_command i3status-rs ~/.config/i3/config.toml
+  status_command i3status
+  # status_command i3status-rs ~/.config/i3/config.toml
+  font pango:monospace 9
   position top
   # mode hide
+
+
+	colors {
+        background $bg-color
+        separator #757575
+        #                  border             background         text
+        focused_workspace  $bg-color          $bg-color          $text-color
+        inactive_workspace $inactive-bg-color $inactive-bg-color $inactive-text-color
+        urgent_workspace   $urgent-bg-color   $urgent-bg-color   $text-color
+    }
 }
+
 
 # window borders
 #---------------
 
 # will deprecate after 4.14
-new_window pixel 4
+# new_window pixel 4
 
 # wont work on 4.14
 # default_border pixel 0
@@ -195,14 +223,24 @@ new_window pixel 4
 bindsym $mod+Shift+o exec "i3lock -c 000000"
 
 # Night light
-exec --no-startup-id redshift -P
+# exec --no-startup-id redshift -P
 
-# Work
-exec --no-startup-id xrandr --output DP2-2 --above eDP1
-exec --no-startup-id dunst
-exec kitty
+
+# Autostart apps
+exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
+exec --no-startup-id "compton -cC"
+# exec --no-startup-id nm-applet
+# exec --no-startup-id "nitrogen --restore"
+exec --no-startup-id "sleep 2s && kalu"
+
+# use Right Alt as the compose key (for accented chars)
+exec --no-startup-id setxkbmap -option compose:ralt
+
+
+# exec --no-startup-id xrandr --output DP2-2 --above eDP1
+# exec --no-startup-id dunst
+# exec kitty
 # exec kitty --session ~/.i3-kitty-session
 # exec vlc ~/radios.xspf --random --loop --qt-system-tray
-exec cvlc ~/radios.xspf --random --loop --one-instance
-
+# exec cvlc ~/radios.xspf --random --loop --one-instance
 

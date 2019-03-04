@@ -145,6 +145,14 @@ set shiftwidth=2
 set expandtab
 
 
+" Display tab chars and trailing spaces
+"====================================================================
+" set listchars=eol:⏎,tab:␉·,trail:␠,nbsp:⎵
+set listchars=tab:␉·,trail:␠,nbsp:⎵
+set list
+
+
+
 " Vim Education
 "====================================================================
 
